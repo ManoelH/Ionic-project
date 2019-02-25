@@ -1,4 +1,6 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
+import { FormGroup, Validators } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-home',
@@ -10,7 +12,18 @@ export class HomePage implements OnInit{
     email:"",
     senha:""
   }
-  mensagem;
+  mensagem = "";  
+  formulario: FormGroup; 
+
+       constructor(public formBuilder: FormBuilder){
+          this.formulario = this.formBuilder.group({
+           email: ['', [Validators.required, 
+                 Validators.email]],
+        senha:['', [Validators.required, Validators.minLength(6)]]
+      });
+  
+    } 
+
 
   login() {
     if(this.user.email === 'teste@teste.com' && this.user.senha === '123asd'){
@@ -20,7 +33,9 @@ export class HomePage implements OnInit{
       this.mensagem = 'EMAIL OU SENHA ESTÃO INCORRETOS!';
     }
   }
-  ngOnInit() {
-    
+
+  ngOnInit(){
+
   }
+
 }
