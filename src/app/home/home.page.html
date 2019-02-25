@@ -3,17 +3,24 @@
 </ion-header>
 
 <ion-content padding>
-  <form>
-    <ion-item>
-      <ion-label position="floating">E-mail</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-    <ion-item>
-      <ion-label position="floating">Senha</ion-label>
-      <ion-input type="password"></ion-input>
-    </ion-item>
-    <ion-button block color="primary" type="submit" expand="full" shape="round">
-      Login
-    </ion-button>
-  </form>
+    <ion-card>
+      <ion-card-header>
+        <ion-title>Login</ion-title>
+      </ion-card-header>
+    
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" aria-required="true"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="user.senha" aria-required="true"></ion-input>
+      </ion-item>
+      <ion-button block color="primary" type="submit" expand="full" shape="round" (click)="login()">
+        Login
+      </ion-button>
+      
+      <label>{{mensagem}}</label>
+      
+  </ion-card>
 </ion-content>
