@@ -31,7 +31,7 @@ export class HomePage implements OnInit{
       this.mensagem = '';
       this.rounter.navigateByUrl('/principal');
     }
-    else if(this.user.email != '' && this.user.senha != ''){
+    else if(this.user.email != '' || this.user.senha != ''){
       this.mensagem = 'EMAIL OU SENHA ESTÃO INCORRETOS!';
     }
   }

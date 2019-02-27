@@ -1,1 +1,21 @@
+ion-content {
+    --background: url('../../assets/imgs/fundo.jpg') 100% no-repeat;
+}
 
+
+ion-item {
+    --ion-item-background: rgba(255, 255, 255, 0.8);
+    color: black;
+}
+
+ion-title {
+    color: white;
+    text-align: center;
+}
+
+ion-label{
+    color: black;
+}
+#msg-error{
+    text-align: center;
+}
