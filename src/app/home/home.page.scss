@@ -1,20 +1,23 @@
 ion-content {
-    --background: url('../../assets/imgs/fundo.jpg') 100% no-repeat;
+    --background: url('../../assets/imgs/guitar.jpg') 100% no-repeat;
 }
 
 
 ion-item {
-    --ion-item-background: rgba(255, 255, 255, 0.8);
-    color: black;
+    --ion-item-background: rgba(255, 255, 255, 0.3);
+    color: white;
 }
 
 ion-title {
     color: white;
     text-align: center;
+    font-size: 20pt;
+    font-family: fantasy;
+    margin-bottom: 15%;
 }
 
 ion-label{
-    color: black;
+    color: white;
 }
 #msg-error{
     text-align: center;

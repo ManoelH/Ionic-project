@@ -6,7 +6,8 @@ const routes: Routes = [
   { path: 'home', loadChildren: './home/home.module#HomePageModule' },
   { path: 'principal', loadChildren: './principal/principal.module#PrincipalPageModule' },
   { path: 'rock', loadChildren: './rock/rock.module#RockPageModule' },
-  { path: 'cristans', loadChildren: './cristans/cristans.module#CristansPageModule' },
+  { path: 'cristans', loadChildren: './cristans/cristans.module#CristansPageModule' },  { path: 'noticias-generos', loadChildren: './noticias-generos/noticias-generos.module#NoticiasGenerosPageModule' },
+
 
 ];
 
