@@ -3,10 +3,24 @@
      <ion-buttons slot="start">
         <ion-back-button></ion-back-button>
       </ion-buttons>
-    <ion-title>Cristans</ion-title>
+    <ion-title>Christians news</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Hillsong Young & Free</ion-card-title>
+          <ion-card-subtitle>III Hillsong Conference</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content (click)="openBlank()">
+          Confira aqui como foi a 3ª Hillsong conference.
+          A Hillsong Conference é uma conferência anual de meio ano de duração de uma semana em Sydney, 
+          com conferências menores de dois ou três dias, 
+          realizadas em Londres e Nova York, todos os anos. 
+          É a maior conferência anual da Austrália.
+          <ion-button>Veja o vídeo _blank</ion-button>
+        </ion-card-content>
+      </ion-card>
 </ion-content>

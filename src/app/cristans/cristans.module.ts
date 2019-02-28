@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
@@ -23,4 +23,13 @@ const routes: Routes = [
   ],
   declarations: [CristansPage]
 })
-export class CristansPageModule {}
+
+@Component({
+  selector: 'app-cristans',
+  templateUrl:'cristans.page.html',   
+  styleUrls:  ['cristans.page.scss'],
+})
+
+export class CristansPageModule {
+  
+}
