@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { MenuController } from '@ionic/angular';
 
 @Component({
   selector: 'app-cristans',
@@ -11,7 +12,7 @@ export class CristansPage implements OnInit {
   ngOnInit() {
   }
 
-  constructor(private iab: InAppBrowser,) { }
+  constructor(private iab: InAppBrowser, private menuCtrl:MenuController) { }
 
   openBlank(){
     this.iab.create('https://www.youtube.com/watch?v=qTAcq-Z_l9A&t=1448s', '_blank');
@@ -20,4 +21,7 @@ export class CristansPage implements OnInit {
     this.iab.create('https://www.youtube.com/watch?v=qTAcq-Z_l9A&t=1448s', '_system');
   }
 
+  ionViewWillEnter() {
+    this.menuCtrl.enable(true);
+  } 
 }

@@ -2,6 +2,8 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
+import { MenuController } from '@ionic/angular';
+
 
 @Component({
   selector: 'app-home',
@@ -16,7 +18,7 @@ export class HomePage implements OnInit{
   mensagem = "";  
   formulario: FormGroup; 
 
-       constructor(private formBuilder: FormBuilder, private rounter: Router){
+       constructor(private formBuilder: FormBuilder, private rounter: Router, private menuCtrl:MenuController){
           this.formulario = this.formBuilder.group({
            email: ['', [Validators.required, 
                  Validators.email]],
@@ -25,6 +27,9 @@ export class HomePage implements OnInit{
   
     } 
 
+    ionViewWillEnter() {
+      this.menuCtrl.enable(false);
+    }  
 
   login() {
     if(this.user.email === 'teste@teste.com' && this.user.senha === '123asd'){
