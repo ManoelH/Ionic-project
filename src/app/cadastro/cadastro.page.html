@@ -8,5 +8,30 @@
   </ion-header>
 
 <ion-content padding>
-
+  <form [formGroup]="formulario">
+    <ion-card>
+      <ion-card-header>
+        
+      </ion-card-header>
+      <ion-item>
+        <ion-label position="floating">E-mail</ion-label>
+        <ion-input type="email" [(ngModel)]="user.email" formControlName="email" placeholder="Digite o email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Senha</ion-label>
+        <ion-input type="password" [(ngModel)]="user.senha" formControlName="senha" placeholder="Digite a senha"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Confirmar senha</ion-label>
+        <ion-input type="password" [(ngModel)]="user.senha2" formControlName="senha2" placeholder="Digite a senha novamente"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label position="floating">Telefone</ion-label>
+        <ion-input type="number" [(ngModel)]="user.telefone" formControlName="senha2" placeholder="Digite o Telefone"></ion-input>
+      </ion-item>
+      <ion-button block type="submit" color="medium" expand="full" shape="round" (click)="cadastrar()">
+        Cadastrar-se
+      </ion-button>
+  </ion-card>
+  </form>
 </ion-content>
