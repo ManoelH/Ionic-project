@@ -3,7 +3,8 @@ import { FormGroup, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MenuController, ToastController } from '@ionic/angular';
-import { userInfo } from 'os';
+import { UsuarioService } from '../services/usuario.service';
+
 
 @Component({
   selector: 'app-cadastro',
@@ -14,13 +15,14 @@ export class CadastroPage implements OnInit {
   user = {
     email:"",
     senha:"",
-    senha2:"",
     telefone:""
   }
+
+  senha2;
   
   formulario: FormGroup; 
   
-  constructor(private formBuilder: FormBuilder, private rounter: Router, private toast:ToastController) {
+  constructor(private formBuilder: FormBuilder, private rounter: Router, private toast:ToastController, private usuarioService:UsuarioService) {
     this.formulario = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       senha:['', [Validators.required, Validators.minLength(6)]],
@@ -41,7 +43,8 @@ async presentToast() {
 }
 
   cadastrar(){
-    if(this.user.senha === this.user.senha2){
+    if(this.user.senha === this.senha2){
+      this.usuarioService.insert(this.user);
       console.log("CADASTROU");
     }
     else{

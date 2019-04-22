@@ -20,6 +20,15 @@
       <ion-button block color="primary" type="submit" expand="full" shape="round" (click)="login()">
         Login
       </ion-button>
+      <ion-label id="ou">Ou entre com</ion-label><br/>
+      <div id="options">
+        <ion-button block color="light" shape="round" class="login-options">
+          <ion-icon slot="icon-only" name="logo-google"></ion-icon>
+        </ion-button>
+        <ion-button block color="primary" shape="round" class="login-options">
+          <ion-icon slot="icon-only" name="logo-facebook"></ion-icon>
+        </ion-button>
+      </div>
       <ion-button block color="medium" type="button" expand="full" shape="round" routerLink="/cadastro">
         Cadastrar-se
       </ion-button>
