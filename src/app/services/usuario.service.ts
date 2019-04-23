@@ -14,7 +14,7 @@ export class UsuarioService {
 
    private createDB() {
     this.getDB().then((db:SQLiteObject) => {
-      db.executeSql("CREATE TABLE IF NOT EXISTS usuarios( id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, senha TEXT, telefone TEXT)", []);
+      db.executeSql("CREATE TABLE IF NOT EXISTS usuarios ( id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, senha TEXT, telefone TEXT)", []);
     });
   }
 
@@ -27,24 +27,22 @@ export class UsuarioService {
     }
 
       /** Insert*/
-  public insert(obj: Object) {
+  public insert(user) {
 
-    let key = Object.keys(obj);
-    let values = Object.values(obj);
-    let interrogacoes = new Array(key.length).fill('?');
+    //let key = Object.keys(obj);
+    //let values = Object.values(obj);
+    //let interrogacoes = new Array(key.length).fill('?');
 
     this.getDB().then((db:SQLiteObject) => {
-      db.executeSql("INSERT INTO " + this.tabela + " (" + key.join(', ') + ") VALUES(" + interrogacoes.join(', ') + ")", values);
+      db.executeSql("INSERT INTO usuarios (email, senha, telefone) VALUES(?, ?, ?)", [user.email, user.senha, user.telefone]);
     });
   }
 
-  public login(email:any, senha:any): Promise<any> {
+  public logar(email: any, senha:any): Promise<any> {
     return this.getDB().then((db:SQLiteObject) => {
-      return db.executeSql("SELECT * FROM " + this.tabela + " WHERE email = ? and senha = ?", [email, senha]).then(resultado => {
-        if (resultado.rows.length > 0)
-          return resultado.rows.item(0);
-        return null;
-      })
+      return db.executeSql("SELECT email FROM usuarios WHERE email = ? AND senha = ?", [email, senha]).then(resultado => {
+        return (resultado.rows.length > 0);
+      });
     });
   }
 }

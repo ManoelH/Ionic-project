@@ -5,6 +5,8 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import {ReactiveFormsModule} from '@angular/forms';
 import { HomePage } from './home.page';
+import { ServicesModule } from '../services/services.module';
+
 
 @NgModule({
   imports: [
