@@ -3,12 +3,91 @@
     <ion-buttons slot="start">
         <ion-menu-button menu="menuId"></ion-menu-button>
     </ion-buttons>
-    <ion-title>Tela principal</ion-title>
+    <ion-title>Feed</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-    <ion-grid>
-        
-    </ion-grid>
+  <ion-item>
+    <ion-avatar slot="start">
+      <img src="https://avatars2.githubusercontent.com/u/38112609?s=400&v=4">
+    </ion-avatar>
+    <ion-label>Manoel Henrique</ion-label>
+  </ion-item>
+  <ion-item>
+    <ion-row>
+      <ion-col size="9">
+          <ion-textarea placeholder="O que você está ouvindo?"></ion-textarea>
+      </ion-col>
+      <ion-col size="3">
+          <ion-button>
+              <ion-icon slot="icon-only" name="send"></ion-icon>
+          </ion-button>
+          <ion-button>
+              <ion-icon slot="icon-only" name="attach"></ion-icon>
+          </ion-button>    
+      </ion-col>
+    </ion-row>  
+  </ion-item>
+
+  <ion-card>
+      <ion-card-header>
+          <ion-card-title>Hillsong Young & Free</ion-card-title>
+        <ion-card-subtitle>III Hillsong Conference</ion-card-subtitle>
+      </ion-card-header>
+    
+      <ion-card-content>
+          <img src="https://i.ytimg.com/vi/qTAcq-Z_l9A/maxresdefault.jpg" (click)="openSystem()">
+          <ion-text color="dark" (click)="openSystem()">
+            <h6>Confira aqui como foi a 3ª Hillsong conference, 
+              a maior conferência anual da Austrália!</h6>
+          </ion-text>
+          <ion-row>
+            <ion-col size="2">
+                <ion-icon name="thumbs-up"></ion-icon>
+            </ion-col>
+            <ion-col size="2">
+                <ion-icon name="thumbs-down"></ion-icon>
+            </ion-col>
+          </ion-row>
+          
+          <ion-item>
+              <ion-textarea placeholder="Comentar"></ion-textarea>
+              <ion-button>
+                <ion-icon slot="icon-only" name="send"></ion-icon>
+              </ion-button>  
+          </ion-item>
+      </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header>
+            <ion-card-title>Skillet</ion-card-title>
+          <ion-card-subtitle>Skillet -“Stars” (The Shack Version) [Official Music Video]</ion-card-subtitle>
+        </ion-card-header>
+      
+        <ion-card-content>
+            <img src="https://3.bp.blogspot.com/-x79Ukv6-aRY/WJrmoeD9tMI/AAAAAAAAAUw/MYAJPeXxG4MglLMLUkNn3Vcd1tu4eFxYwCLcB/s1600/Skillet%2B-%2BStars.jpg" 
+            (click)="openSystem()">
+            <ion-text color="dark" (click)="openSystem()">
+              <h6>Confira o vídeo da nova versão da música stars!</h6>
+            </ion-text>
+            <ion-row>
+              <ion-col size="2">
+                  <ion-icon name="thumbs-up"></ion-icon>
+              </ion-col>
+              <ion-col size="2">
+                  <ion-icon name="thumbs-down"></ion-icon>
+              </ion-col>
+            </ion-row>
+            
+            <ion-item>
+                <ion-textarea placeholder="Comentar"></ion-textarea>
+                <ion-button>
+                  <ion-icon slot="icon-only" name="send"></ion-icon>
+                </ion-button>  
+            </ion-item>
+        </ion-card-content>
+      </ion-card>
+  
 </ion-content>
