@@ -22,9 +22,8 @@ export class HomePage implements OnInit{
 
        constructor(private formBuilder: FormBuilder, private rounter: Router, private menuCtrl:MenuController, private toast:ToastController, private usuarioService:UsuarioService){
           this.formulario = this.formBuilder.group({
-           email: ['', [Validators.required, 
-                 Validators.email]],
-        senha:['', [Validators.required, Validators.minLength(6)]]
+            email: ['', [Validators.required, Validators.email]],
+            senha:['', [Validators.required, Validators.minLength(6)]],
       });
   
     } 
@@ -44,21 +43,21 @@ export class HomePage implements OnInit{
       toast.present();
     }
 
-    async login() {
-    let logou = await this.usuarioService.logar(this.user.email, this.user.senha);
-    if(logou){
-      this.rounter.navigateByUrl('/principal');
-    }
-    else{
-      this.presentToast();
-    }
-    // if(this.user.email === 'teste@teste.com' && this.user.senha === '123asd'){
-    //   this.mensagem = '';
-    //   this.rounter.navigateByUrl('/principal');
-    // }
-    // else if(this.user.email != '' || this.user.senha != ''){
-    //   this.presentToast();
-    // }
+    async login(){
+       let logado = await this.usuarioService.logar(this.user.email, this.user.senha);     
+      if(logado){
+       this.rounter.navigateByUrl('principal');
+      }
+      else{
+        this.presentToast();
+      }
+      // if(this.user.email === 'teste@teste.com' && this.user.senha === '123asd'){
+      //   this.mensagem = '';
+      //   this.rounter.navigateByUrl('/principal');
+      // }
+      // else if(this.user.email != '' || this.user.senha != ''){
+      //   this.presentToast();
+      // }
   }
 
   ngOnInit(){

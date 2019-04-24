@@ -42,21 +42,10 @@ async presentToast() {
   toast.present();
 }
 
-async presentToastCad() {
-  const toast = await this.toast.create({
-    message: 'USUÁRIO CADASTRADO COM SUCESSO!',
-    duration: 2000,
-    position: 'top',
-    animated: true,
-    color: 'success'
-  });
-  toast.present();
-}
-
   cadastrar(){
     if(this.user.senha === this.senha2){
       this.usuarioService.insert(this.user);
-      this.presentToastCad();
+      this.rounter.navigateByUrl('home');
     }
     else{
       this.presentToast();
