@@ -10,6 +10,7 @@ const routes: Routes = [
   { path: 'amigos', loadChildren: './amigos/amigos.module#AmigosPageModule' },
   { path: 'musicas', loadChildren: './musicas/musicas.module#MusicasPageModule' },
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
+  { path: 'sugestoes', loadChildren: './sugestoes/sugestoes.module#SugestoesPageModule' },
 
 
 ];
