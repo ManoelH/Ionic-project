@@ -11,6 +11,7 @@ const routes: Routes = [
   { path: 'musicas', loadChildren: './musicas/musicas.module#MusicasPageModule' },
   { path: 'cadastro', loadChildren: './cadastro/cadastro.module#CadastroPageModule' },
   { path: 'sugestoes', loadChildren: './sugestoes/sugestoes.module#SugestoesPageModule' },
+  { path: 'perfil', loadChildren: './perfil/perfil.module#PerfilPageModule' },
 
 
 ];

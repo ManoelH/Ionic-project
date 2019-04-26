@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+          <ion-menu-button menu="menuId"></ion-menu-button>
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+    <ion-title>perfil</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-row>
+    <ion-col size="12">
+      <ion-item lines="none">
+          <ion-avatar slot="start" (click)="tirarFoto()">
+            <img src="https://avatars2.githubusercontent.com/u/38112609?s=400&v=4">
+         </ion-avatar>
+         <ion-label>Manoel Henrique</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Configurações</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Dados da conta</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Privacidade</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label>Ajuda</ion-label>
+      </ion-item>
+    </ion-col>
+  </ion-row>
+</ion-content>
