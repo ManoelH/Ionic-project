@@ -30,7 +30,7 @@
               <ion-item button routerLink="/sugestoes">
                 <ion-icon slot="start" name="text"></ion-icon> Sugestões
               </ion-item>
-              <ion-item button routerLink="/home">
+              <ion-item button (click)="logout()" routerLink="/home">
                 <ion-icon slot="start" name="exit"></ion-icon> Sair
               </ion-item>
             </ion-list>

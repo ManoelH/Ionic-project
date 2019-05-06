@@ -17,7 +17,6 @@ export class UsuarioService {
     this.getDB().then((db:SQLiteObject) => {
       db.executeSql("CREATE TABLE IF NOT EXISTS usuarios ( id INTEGER PRIMARY KEY AUTOINCREMENT, email TEXT, senha TEXT, telefone TEXT)", []);
     });
-    this.presentToast();
   }
 
     /** Recupera banco de dados  */
@@ -37,7 +36,6 @@ export class UsuarioService {
 
     this.getDB().then((db:SQLiteObject) => {
       db.executeSql("INSERT INTO usuarios (email, senha, telefone) VALUES(?, ?, ?)", [user.email, user.senha, user.telefone]);
-      this.presentToastCadastrado();  
     });
   }
 
@@ -47,25 +45,5 @@ export class UsuarioService {
         return (resultado.rows.length > 0);
       });
     });
-  }
-
-  async presentToast() {
-    const toast = await this.toast.create({
-      message: 'BANCO CRIADO.',
-      duration: 2000,
-      color: 'success'
-    });
-    toast.present();
-  }
-
-  async presentToastCadastrado() {
-    const toast = await this.toast.create({
-      message: 'USUÁRIO CADASTRADO COM SUCESSO!',
-      duration: 2000,
-      position: 'top',
-      animated: true,
-      color: 'success'
-    });
-    toast.present();
   }
 }
