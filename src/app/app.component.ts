@@ -24,13 +24,13 @@ export class AppComponent {
     });
 
     var firebaseConfig = {
-      apiKey: "AIzaSyDtibFP0wnv7L6HbaQBknP-Hc-HUMarjT0",
-      authDomain: "songs-50230.firebaseapp.com",
-      databaseURL: "https://songs-50230.firebaseio.com",
-      projectId: "songs-50230",
-      storageBucket: "songs-50230.appspot.com",
-      messagingSenderId: "145530453760",
-      appId: "1:145530453760:web:5b33005ef4496b81"
+      apiKey: "",
+      authDomain: "",
+      databaseURL: "",
+      projectId: "",
+      storageBucket: "",
+      messagingSenderId: "",
+      appId: ""
     };
     // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
