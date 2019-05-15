@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-musicas',
@@ -8,7 +9,9 @@ import { MenuController } from '@ionic/angular';
 })
 export class MusicasPage implements OnInit {
 
-  constructor(private menuCtrl:MenuController) { }
+  constructor(private menuCtrl:MenuController) { 
+    this.atualizaCheckboxEstilosMusicais();
+  }
 
   ngOnInit() {
   }
@@ -37,4 +40,57 @@ export class MusicasPage implements OnInit {
     { val: 'Hip Hop/Rap', isChecked: false },
     { val: 'Infantil', isChecked: false }
   ];
+
+  public styleMusic = [];
+  public styleMusicUser = [];
+
+  public atualizaCheckboxEstilosMusicais(){
+    this.buscaEstilosMusicais();
+//    console.log(this.styleMusic)
+    this.buscaEstilosMusicaisUsuario();
+//    console.log(this.styleMusicUser)
+    for(var i = 0; i < this.styleMusicUser.length; i++){
+      for(var j = 0; j < this.styleMusic.length; j++){
+        if(this.styleMusicUser[i].val == this.styleMusic[j].val)
+          this.styleMusic[j].isChecked = true;
+      }
+    }
+    console.log(this.styleMusic);
+  }
+
+  public buscaEstilosMusicais(){
+    let db = firebase.database();
+    db.ref('estilos_musicais').once('value').then(snapshot => {
+      snapshot.forEach(estiloMusical => {
+        this.styleMusic.push(estiloMusical.val());
+      });
+    });
+  }
+
+  public buscaEstilosMusicaisUsuario(){
+    let db = firebase.database();
+    let userID = firebase.auth().currentUser.uid;
+    db.ref('estilos_usuarios').child(userID).once('value').then(snapshot => {
+      snapshot.forEach(estiloMusical => {
+        this.styleMusicUser.push(estiloMusical.val());
+      });
+    });
+  }
+
+  public selecionarEstiloMusical(){
+    // let db = firebase.database();
+    // db.ref('estilos_musicais').set(this.form)
+    let estilosEscolhidos = this.form.filter(function(valor, indice, array){
+      if(valor.isChecked==true){
+        return valor.val
+      }
+    });
+
+    let db = firebase.database();
+    let userID = firebase.auth().currentUser.uid;
+    let estilos = {
+      estilos: estilosEscolhidos
+    }
+    db.ref('estilos_usuarios').child(userID).set(estilosEscolhidos)
+  }
 }
