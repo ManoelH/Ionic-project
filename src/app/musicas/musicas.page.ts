@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import * as firebase from 'firebase';
+import { AdMobFree } from '@ionic-native/admob-free/ngx';
 
 @Component({
   selector: 'app-musicas',
@@ -9,11 +10,17 @@ import * as firebase from 'firebase';
 })
 export class MusicasPage implements OnInit {
 
-  constructor(private menuCtrl:MenuController) { 
+  constructor(private menuCtrl:MenuController, private adMobFree:AdMobFree) { 
     this.atualizaCheckboxEstilosMusicais();
   }
 
   ngOnInit() {
+    this.adMobFree.banner.config({
+      id: 'ca-app-pub-9800755908104997/5070761726',
+      isTesting:true, 
+      autoShow: true
+      });
+      this.adMobFree.banner.prepare();
   }
 
   ionViewWillEnter() {
