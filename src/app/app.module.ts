@@ -9,6 +9,8 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
+import { AdMobFree, AdMobFreeBanner } from '@ionic-native/admob-free/ngx';
+
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,6 +22,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
   providers: [
     StatusBar,
     SplashScreen,
+    AdMobFree,
+    AdMobFreeBanner,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     InAppBrowser,
   ],

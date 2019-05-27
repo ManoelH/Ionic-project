@@ -4,7 +4,9 @@ import { FormsModule } from '@angular/forms';
 import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { MusicasPage } from './musicas.page';
-import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { AdMobFree, AdMobFreeBanner } from '@ionic-native/admob-free/ngx';
+
+
 
 const routes: Routes = [
   {
@@ -21,7 +23,7 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ],
   declarations: [MusicasPage],
-  providers: [AdMobFree]
+  providers: [AdMobFree, AdMobFreeBanner]
 
 })
 export class MusicasPageModule {}
