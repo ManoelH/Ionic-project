@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { MenuController, ToastController } from '@ionic/angular';
 //import { UsuarioService } from '../services/usuario.service';
 import * as firebase from 'firebase';
+import { FCM } from '@ionic-native/fcm/ngx';
 
 
 
@@ -21,7 +22,8 @@ export class HomePage implements OnInit{
   mensagem = "";  
   formulario: FormGroup; 
 
-       constructor(private formBuilder: FormBuilder, private rounter: Router, private menuCtrl:MenuController, private toast:ToastController){
+       constructor(private formBuilder: FormBuilder, private rounter: Router, private menuCtrl:MenuController, private toast:ToastController,
+      private fcm:FCM){
           this.formulario = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             senha:['', [Validators.required, Validators.minLength(6)]],
@@ -68,7 +70,13 @@ export class HomePage implements OnInit{
   }
 
   ngOnInit(){
+    this.fcm.subscribeToTopic('novas_noticias');
 
+    //Salva o Token único do dispositivo(celular) do usuário no banco
+    this.fcm.getToken().then(token => {
+    let uid = firebase.auth().currentUser.uid;
+    firebase.database().ref('usuarios/'+uid).set({dispositivo:token});
+    });
   }
 
 }
