@@ -17,7 +17,7 @@ export class MusicasPage implements OnInit {
 
   ngOnInit() {
     this.adMobFree.banner.config({
-      id: 'ca-app-pub-9800755908104997/6257497108',
+      id: 'ca-app-pub-9800755908104997/7869853879',
       isTesting: true,
       autoShow: true
     });
