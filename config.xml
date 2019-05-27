@@ -85,9 +85,9 @@
     <plugin name="cordova-plugin-inappbrowser" spec="3.0.0" />
     <plugin name="cordova-sqlite-storage" spec="3.2.0" />
     <plugin name="cordova-plugin-camera" spec="4.0.3" />
-    <engine name="android" spec="7.1.4" />
-    <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="2.4.0" />
     <plugin name="cordova-plugin-admob-free" spec="0.26.0">
         <variable name="ADMOB_APP_ID" value="ca-app-pub-9800755908104997~4181258447" />
     </plugin>
+    <plugin name="cordova-plugin-fcm-with-dependecy-updated" spec="2.4.0" />
+    <engine name="android" spec="7.1.4" />
 </widget>

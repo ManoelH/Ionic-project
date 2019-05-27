@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AdMobFree, AdMobFreeBanner } from '@ionic-native/admob-free/ngx';
+//import { FCM } from '@ionic-native/fcm/ngx';
 
 
 @NgModule({
