@@ -15,13 +15,11 @@ export class CadastroPage implements OnInit {
   user = {
     email:"",
     senha:"",
-    //telefone:""
   }
 
   senha2;
   
   formulario: FormGroup; 
-  
   
   constructor(private formBuilder: FormBuilder, private rounter: Router, private toast:ToastController) {
     this.formulario = this.formBuilder.group({
@@ -57,9 +55,7 @@ async presentToast(mensagem, cor) {
     else{
       this.presentToast('AS SENHAS NÃO COINCIDEM!', 'danger');
     }
-}
-
-  
+}  
 
   ngOnInit() {
   }

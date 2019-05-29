@@ -20,7 +20,7 @@ export class HomePage implements OnInit{
   }
   mensagem = "";  
   formulario: FormGroup; 
-
+  form = [];
        constructor(private formBuilder: FormBuilder, private rounter: Router, private menuCtrl:MenuController, private toast:ToastController){
           this.formulario = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -51,6 +51,8 @@ export class HomePage implements OnInit{
           
             firebase.auth().onAuthStateChanged(usuarioLogado =>{
               if(usuarioLogado != null){
+                //this.buscaEstilosMusicais();
+                //this.selecionarEstiloMusical();
                 this.rounter.navigateByUrl('principal');      
               }
             })
@@ -65,6 +67,25 @@ export class HomePage implements OnInit{
       //   this.presentToast();
       // }
 
+  }
+
+  public buscaEstilosMusicais(){
+    let db = firebase.database();
+    db.ref('estilos_musicais').once('value').then(snapshot => {
+      snapshot.forEach(estiloMusical => {
+        this.form.push(estiloMusical.val());
+      });
+    });
+  }
+  
+  public selecionarEstiloMusical(){
+    let estilosEscolhidos = this.form;
+    let db = firebase.database();
+    let userID = firebase.auth().currentUser.uid;
+    let estilos = {
+      estilos: estilosEscolhidos
+    }
+    db.ref('estilos_usuarios').child(userID).set(estilosEscolhidos)
   }
 
   ngOnInit(){

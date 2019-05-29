@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 import { AdMobFree } from '@ionic-native/admob-free/ngx';
+import { Router } from '@angular/router';
+import { timeout } from 'q';
 
 
 @Component({
@@ -11,7 +13,8 @@ import { AdMobFree } from '@ionic-native/admob-free/ngx';
 })
 export class MusicasPage implements OnInit {
 
-  constructor(private menuCtrl:MenuController, public adMobFree:AdMobFree) { 
+  constructor(private menuCtrl:MenuController, public adMobFree:AdMobFree, private toastController:ToastController,
+    private router:Router) { 
     this.atualizaCheckboxEstilosMusicais();
   }
 
@@ -28,71 +31,30 @@ export class MusicasPage implements OnInit {
     this.menuCtrl.enable(true);
   }
 
-  public form = [
-    { val: 'Axé', isChecked: false },
-    { val: 'Black Music', isChecked: false },
-    { val: 'Blues', isChecked: false },
-    { val: 'Classic Rock', isChecked: false },
-    { val: 'Clássico', isChecked: false },
-    { val: 'Country', isChecked: false },
-    { val: 'Dance', isChecked: false },
-    { val: 'Eletrônica', isChecked: false },
-    { val: 'Emocore', isChecked: false },
-    { val: 'Folk', isChecked: false },
-    { val: 'Forró', isChecked: false },
-    { val: 'Funk', isChecked: false },
-    { val: 'Gospel/Religioso', isChecked: false },
-    { val: 'Hard Rock', isChecked: false },
-    { val: 'Hardcore', isChecked: false },
-    { val: 'Heavy Metal', isChecked: false },
-    { val: 'Hip Hop/Rap', isChecked: false },
-    { val: 'Infantil', isChecked: false }
-  ];
+  public form = [    
+  { val: 'Axé', isChecked: false },
+  { val: 'Black Music', isChecked: false },
+  { val: 'Blues', isChecked: false },
+  { val: 'Classic Rock', isChecked: false },
+  { val: 'Clássico', isChecked: false },
+  { val: 'Country', isChecked: false },
+  { val: 'Dance', isChecked: false },
+  { val: 'Eletrônica', isChecked: false },
+  { val: 'Emocore', isChecked: false },
+  { val: 'Folk', isChecked: false },
+  { val: 'Forró', isChecked: false },
+  { val: 'Funk', isChecked: false },
+  { val: 'Gospel/Religioso', isChecked: false },
+  { val: 'Hard Rock', isChecked: false },
+  { val: 'Hardcore', isChecked: false },
+  { val: 'Heavy Metal', isChecked: false },
+  { val: 'Hip Hop/Rap', isChecked: false },
+  { val: 'Infantil', isChecked: false }];
 
-  public styleMusic = [];
-  public styleMusicUser = [];
+  public estilosMusicaisUsuario = [];
 
-  public atualizaCheckboxEstilosMusicais(){
-    this.buscaEstilosMusicais();
-//    console.log(this.styleMusic)
-    this.buscaEstilosMusicaisUsuario();
-//    console.log(this.styleMusicUser)
-    for(var i = 0; i < this.styleMusicUser.length; i++){
-      for(var j = 0; j < this.styleMusic.length; j++){
-        if(this.styleMusicUser[i].val == this.styleMusic[j].val)
-          this.styleMusic[j].isChecked = true;
-      }
-    }
-    console.log(this.styleMusic);
-  }
-
-  public buscaEstilosMusicais(){
-    let db = firebase.database();
-    db.ref('estilos_musicais').once('value').then(snapshot => {
-      snapshot.forEach(estiloMusical => {
-        this.styleMusic.push(estiloMusical.val());
-      });
-    });
-  }
-
-  public buscaEstilosMusicaisUsuario(){
-    let db = firebase.database();
-    let userID = firebase.auth().currentUser.uid;
-    db.ref('estilos_usuarios').child(userID).once('value').then(snapshot => {
-      snapshot.forEach(estiloMusical => {
-        this.styleMusicUser.push(estiloMusical.val());
-      });
-    });
-  }
-
-  public selecionarEstiloMusical(){
-    // let db = firebase.database();
-    // db.ref('estilos_musicais').set(this.form)
-    let estilosEscolhidos = this.form.filter(function(valor, indice, array){
-      if(valor.isChecked==true){
-        return valor.val
-      }
-    });
+   async selecionarEstiloMusical(){
+    let estilosEscolhidos = this.form;
 
     let db = firebase.database();
     let userID = firebase.auth().currentUser.uid;
@@ -100,5 +62,40 @@ export class MusicasPage implements OnInit {
       estilos: estilosEscolhidos
     }
     db.ref('estilos_usuarios').child(userID).set(estilosEscolhidos)
+    this.presentToast();
+    this.router.navigateByUrl('principal');
   }
+
+  public atualizaCheckboxEstilosMusicais(){
+    this.buscaEstilosMusicaisUsuario();
+
+  }
+
+  public buscaEstilosMusicaisUsuario(){
+    let db = firebase.database();
+    let userID = firebase.auth().currentUser.uid;
+    db.ref('estilos_usuarios').child(userID).once('value').then(snapshot => {
+      snapshot.forEach(estiloMusical => {
+        this.estilosMusicaisUsuario.push(estiloMusical.val());
+        console.log(this.estilosMusicaisUsuario.length)
+        if(this.estilosMusicaisUsuario.length > 0)
+          this.form = this.estilosMusicaisUsuario;  
+      });
+    });
+
+    
+  }
+
+
+  async presentToast() {
+    const toast = await this.toastController.create({
+      message: 'Estilos musicais atualizados com sucesso',
+      duration: 2000,
+      position: 'top',
+      color: 'success',
+      animated: true
+    });
+    toast.present();
+  }
+
 }
