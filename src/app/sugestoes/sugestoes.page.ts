@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuController } from '@ionic/angular';
+import { MenuController, ToastController } from '@ionic/angular';
 import * as firebase from 'firebase';
 
 @Component({
@@ -9,9 +9,17 @@ import * as firebase from 'firebase';
 })
 export class SugestoesPage implements OnInit {
 
-  constructor(private menuCtrl:MenuController) {}
+  constructor(private menuCtrl:MenuController, private toastController:ToastController) {}
 
   public artistas = [];
+
+    // public usuario_artistas_seguidos = [
+    //   {idUsuario: 'fefse'},
+    //   {artistaSeguidos: 
+    //     [{
+    //       idArtista: 'weed'}, {idArtista: 'weed'}
+    //     ] }
+    //   ]
 
   ngOnInit() {
     this.buscaArtistas();
@@ -33,5 +41,19 @@ export class SugestoesPage implements OnInit {
       });
       console.log(this.artistas)
     });
+  }
+
+  public seguirArtista(artista){
+    this.presentToast(artista);
+  }
+
+  async presentToast(artista) {
+    const toast = await this.toastController.create({
+      message: `${artista} foi seguido com sucesso`,
+      duration: 2000,
+      position: 'top',
+      color: 'success'
+    });
+    toast.present();
   }
 }

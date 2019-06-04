@@ -19,7 +19,7 @@
         <ion-card-content>
             <img src="{{art.foto}}">
             <ion-item>
-                <ion-button>
+                <ion-button (click)="seguirArtista(art.nome)">
                   <ion-icon slot="icon-only" name="person-add"></ion-icon>
                 </ion-button>  
             </ion-item>
