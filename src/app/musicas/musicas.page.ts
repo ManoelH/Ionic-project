@@ -82,8 +82,6 @@ export class MusicasPage implements OnInit {
           this.form = this.estilosMusicaisUsuario;  
       });
     });
-
-    
   }
 
 

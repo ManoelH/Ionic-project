@@ -9,14 +9,15 @@
 </ion-header>
 
 <ion-content padding>
-    <ion-card>
+
+      <ion-card *ngFor="let art of artistas">
         <ion-card-header>
-            <ion-card-title>Lauren Daigle</ion-card-title>
-          <ion-card-subtitle>Christian singer</ion-card-subtitle>
+            <ion-card-title>{{art.nome}}</ion-card-title>
+          <ion-card-subtitle>{{art.generos}} singer</ion-card-subtitle>
         </ion-card-header>
       
         <ion-card-content>
-            <img src="https://www1.cbn.com/sites/default/files/styles/video_ratio_16_9/public/media/slider/images/laurendaigle6_hdv.jpg?itok=vTcq6AP9">
+            <img src="{{art.foto}}">
             <ion-item>
                 <ion-button>
                   <ion-icon slot="icon-only" name="person-add"></ion-icon>
@@ -24,36 +25,4 @@
             </ion-item>
         </ion-card-content>
       </ion-card>
-
-      <ion-card>
-          <ion-card-header>
-              <ion-card-title>Elevation Worship</ion-card-title>
-            <ion-card-subtitle>Christian band</ion-card-subtitle>
-          </ion-card-header>
-        
-          <ion-card-content>
-              <img src="http://c.klove.com/images/music/artists/bios/Elevation%20Worship%202017.jpg">
-              <ion-item>
-                  <ion-button>
-                    <ion-icon slot="icon-only" name="person-add"></ion-icon>
-                  </ion-button>  
-              </ion-item>
-          </ion-card-content>
-      </ion-card>
-
-      <ion-card>
-        <ion-card-header>
-            <ion-card-title>Kari Job</ion-card-title>
-          <ion-card-subtitle>Christian singer</ion-card-subtitle>
-        </ion-card-header>
-      
-        <ion-card-content>
-            <img src="https://comunhao.com.br/wp-content/uploads/2017/02/images_images2_0001Kari-696x374.jpg">
-            <ion-item>
-                <ion-button>
-                  <ion-icon slot="icon-only" name="person-add"></ion-icon>
-                </ion-button>  
-            </ion-item>
-        </ion-card-content>
-    </ion-card>
 </ion-content>
