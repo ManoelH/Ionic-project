@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "145530453760",
-    "firebase_url": "https://songs-50230.firebaseio.com",
-    "project_id": "songs-50230",
-    "storage_bucket": "songs-50230.appspot.com"
+    "project_number": "",
+    "firebase_url": "",
+    "project_id": "",
+    "storage_bucket": ""
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:145530453760:android:b099888a5624476e",
+        "mobilesdk_app_id": "",
         "android_client_info": {
-          "package_name": "br.al.maceio.ionic.songs"
+          "package_name": ""
         }
       },
       "oauth_client": [
         {
-          "client_id": "145530453760-d8eq2dhthotbs4ds59h4r10ksenircs7.apps.googleusercontent.com",
+          "client_id": "",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyAVZmrDsZLkdEfqI3APgyBze21o5KR-s08"
+          "current_key": ""
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "145530453760-d8eq2dhthotbs4ds59h4r10ksenircs7.apps.googleusercontent.com",
+              "client_id": "",
               "client_type": 3
             }
           ]
